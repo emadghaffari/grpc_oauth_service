@@ -49,7 +49,7 @@ func StartAplication()  {
 	
 	server := grpc.NewServer()
 
-	accesstokenpb.RegisterAccessTokenServer(server, controllers.ClientAccessToken)
+	accesstokenpb.RegisterAccessTokenServer(server, controllers.ServerAccessToken)
 	reflection.Register(server)
 
 	go func ()  {
