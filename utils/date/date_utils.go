@@ -18,3 +18,10 @@ func GetNowString() string {
 func GetFutureTime(year int, month int, day int) string {
 	return GetNow().AddDate(year, month, day).Format(apiDateLayout)
 }
+
+// ParseDate func
+// parse string to date
+func ParseDate(date string) time.Time {
+	t,_ := time.Parse(apiDateLayout,date)
+	return t 
+}
