@@ -47,7 +47,7 @@ func (ac *accessToken) Get(req *accesstokenpb.GetAccessTokenRequest) (*accesstok
 		logger.Error("Error in Query for get from cassandra",err)
 		return nil, errors.HandlerInternalServerError(fmt.Sprintf("Error in Query for get from cassandra: %v",err),err)
 	}
-	if (date.GetNow().Before(date.ParseDate(result.ExpiredAt))){
+	if !date.ParseDate(result.ExpiredAt).After(date.GetNow()){
 		return nil, errors.HandlerUnauthorizedError(fmt.Sprintf("json token is expired."))
 	}
 	return &result,nil
