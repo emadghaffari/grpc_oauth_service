@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pingpb;
+option go_package = "databases/protos/pingpb";
+
+
+message PingRequest {
+    string value = 1;
+}
+
+message PingResponse {
+    string result = 1;
+}
+
+service PingService {
+    rpc Ping (PingRequest) returns (PingResponse);
+}
